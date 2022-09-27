@@ -1,0 +1,9 @@
+To make code more clear and proper I propose Strategy pattern.
+To do this new interface is needed. We need to create 5 separate class such as:
+-AddItems(...)
+-DeleteItem
+-GetAllItems
+-GetItemById
+-UpdateItem
+Based on that we dont need LocationsRepository and TeamsRepository classes.
+LocationsController and TemsController will works as a context.

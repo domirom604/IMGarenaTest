@@ -6,7 +6,7 @@ using System.IO;
 
 namespace MatchDataManager.Api.Repositories;
 
-public static class LocationsRepository
+public  class LocationsRepository
 {
     private static List<Location> _locations;
 
