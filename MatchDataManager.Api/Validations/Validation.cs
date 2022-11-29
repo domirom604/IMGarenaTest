@@ -12,68 +12,37 @@ namespace MatchDataManager.Api.Validations
             if(validationObject != null)
             {
                 
-                if (validationObject is Location)
+                if (validationObject is Library)
                 {
-                    List<Location> _locations = _list.Cast<Location>().ToList();
-                    Location location = (Location)validationObject;
-                    LocationName(location.Name, checkers, _locations);
-                    CityNameChecker(location.City, checkers);
+                    List<Library> _libraries = _list.Cast<Library>().ToList();
+                    Library library = (Library)validationObject;
+                    LocationName(library.BookName, checkers, _libraries);
+                    AuthorNameChecker(library.Author, checkers);
                 }
-                if (validationObject is Team)
-                {
-                    List<Team> _teams = _list.Cast<Team>().ToList();
-                    Team team = (Team)validationObject;
-                    TeamName(team.Name, checkers, _teams);
-                    CoachNameChecker(team.CoachName, checkers);
-                }
+               
             }
         }
 
-        public static void LocationName(string name, Checkers checkers, List<Location> _locations)
+        public static void LocationName(string name, Checkers checkers, List<Library> _libraies)
         {
             
             if(name != null && name.Length < 255 && name!="string")
             {
 
-                checkers.NameChecker = true;
-                LocationNameExistChecker(name, checkers, _locations);
+                checkers.BookNameChecker = true;
+                BookNameExistChecker(name, checkers, _libraies);
             }
             else
             {
-                checkers.NameChecker = false;
+                checkers.BookNameChecker = false;
             }
         }
 
-        public static void TeamName(string name, Checkers checkers, List<Team> _teams)
-        {
-            if (name != null && name.Length < 255 && name != "string")
-            {
-                checkers.NameChecker = true;
-                TeamNameExistChecker(name, checkers, _teams);
-            }
-            else
-            {
-                checkers.NameChecker = false;
-            }
-        }
-
-        public static void TeamNameExistChecker(string name, Checkers checkers, List<Team> _teams)
+        
+        public static void BookNameExistChecker(string name, Checkers checkers, List<Library> _libraies)
         {
             bool exist = false;
-            exist =_teams.Exists(x => x.Name == name);
-            if (exist==false)
-            {
-                checkers.ItemExister = false;
-            }
-            else
-            {
-                checkers.ItemExister = true;
-            }
-        }
-        public static void LocationNameExistChecker(string name, Checkers checkers, List<Location> _locations)
-        {
-            bool exist = false;
-            exist = _locations.Exists(x => x.Name == name);
+            exist = _libraies.Exists(x => x.BookName == name);
             if (exist == false)
             {
                 checkers.ItemExister = false;
@@ -85,27 +54,27 @@ namespace MatchDataManager.Api.Validations
         }
 
 
-        public static void CityNameChecker(string city, Checkers checkers)
+        public static void AuthorNameChecker(string name, Checkers checkers)
         {
-            if (city != null && city.Length < 55 && city != "string")
+            if (name != null && name.Length < 55 && name != "string")
             {
-                checkers.CityChecker = true;
+                checkers.AuthorChecker = true;
             }
             else
             {
-                checkers.CityChecker = false;
+                checkers.AuthorChecker = false;
             }
         }
 
-        public static void CoachNameChecker(string coachName, Checkers checkers)
+        public static void CoachNameChecker(string year, Checkers checkers)
         {
-            if (coachName == null && coachName.Length < 55 && coachName != "string")
+            if (year == null && year.Length < 55 && year != "string")
             {
-                checkers.CoachChecker = true;
+                checkers.YearOFPublishChecker = true;
             }
             else
             {
-                checkers.CoachChecker = false;
+                checkers.YearOFPublishChecker = false;
             }
         }
 

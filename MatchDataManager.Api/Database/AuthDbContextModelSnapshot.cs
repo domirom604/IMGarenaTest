@@ -17,65 +17,44 @@ namespace MatchDataManager.Api.Database
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.9");
 
-            modelBuilder.Entity("MatchDataManager.Api.Models.Location", b =>
+            modelBuilder.Entity("Library", b =>
                 {
-                    b.Property<int>("IdKey")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("City")
+                    b.Property<string>("Author")
                         .HasMaxLength(55)
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("BookName")
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.HasKey("IdKey");
+                    b.Property<string>("CityOfPublish")
+                        .HasMaxLength(55)
+                        .HasColumnType("TEXT");
 
-                    b.ToTable("LocationTable");
+                    b.Property<int>("IdKey")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("YearOFPublish")
+                        .HasMaxLength(5)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BookTable");
 
                     b.HasData(
                         new
                         {
-                            IdKey = 1,
-                            City = "poznan",
                             Id = new Guid("9d2b0228-4d0d-4c23-8b49-01a698857799"),
-                            Name = "emi"
-                        });
-                });
-
-            modelBuilder.Entity("MatchDataManager.Api.Models.Team", b =>
-                {
-                    b.Property<int>("IdKey")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("CoachName")
-                        .HasMaxLength(55)
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(255)
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("IdKey");
-
-                    b.ToTable("TeamTable");
-
-                    b.HasData(
-                        new
-                        {
+                            Author = "Alan Walk",
+                            BookName = "New Story Book",
+                            CityOfPublish = "Gliwice",
                             IdKey = 1,
-                            CoachName = "elon",
-                            Id = new Guid("9d2b0228-4d0d-4c23-8b49-01a698857709"),
-                            Name = "domi"
+                            YearOFPublish = "2022"
                         });
                 });
 #pragma warning restore 612, 618

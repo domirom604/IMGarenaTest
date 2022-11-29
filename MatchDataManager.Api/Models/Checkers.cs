@@ -2,11 +2,13 @@
 {
     public class Checkers
     {
-        public bool NameChecker { get; set; }
+        public bool BookNameChecker { get; set; }
 
-        public bool CityChecker { get; set; }
+        public bool AuthorChecker { get; set; }
 
-        public bool CoachChecker { get; set; }
+        public bool YearOFPublishChecker { get; set; }
+
+        public bool CityOfPublishChecker { get; set; }
 
         public bool ItemExister { get; set; }
     }

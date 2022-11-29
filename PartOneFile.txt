@@ -1,7 +1,0 @@
-- I made small database with two tables. One table to store informations about Locations
-	and the second store Teams information;
-- Database has information about maximum length;
-- Aditionally i made Veryfication (validation) class to veryfy puted datas.
-	This class is responsible to check required length of the data and also
-	veryfy existance of the same name in database;
-- At the end i added universal path to read database;
